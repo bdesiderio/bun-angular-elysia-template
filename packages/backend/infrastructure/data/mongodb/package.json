@@ -1,0 +1,20 @@
+{
+  "name": "app-infrastructure-mongodb",
+  "version": "0.1.0",
+  "module": "./src/index.ts",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "dependencies": {
+    "calipso-data-mongodb": "workspace:*",
+    "calipso-ts": "workspace:*",
+    "class-transformer": "^0.5.1"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

@@ -2,6 +2,9 @@
     "name": "monorepo",
     "private": true,
     "workspaces": [
-        "packages/*"
+        "packages/calipso-libs/*/**",
+        "packages/*/**",
+        "packages/backend/*/**",
+        "packages/frontend/*"
     ]
 }

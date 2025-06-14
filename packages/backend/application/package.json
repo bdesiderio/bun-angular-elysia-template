@@ -1,0 +1,24 @@
+{
+  "name": "app-application",
+  "version": "0.1.0",
+  "module": "./src/index.ts",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@calipso/typescript-core": "workspace:*",
+    "axios": "^1.4.0",
+    "calipso-ts": "0.1.0",
+    "class-transformer": "^0.5.1",
+    "app-core": "workspace:*",
+    "app-shared-dtos": "workspace:*",
+    "inversify": "^6.0.1",
+    "reflect-metadata": "^0.1.13"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

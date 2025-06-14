@@ -5,7 +5,7 @@
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
     "paths": {
-      "@workspace/ts-dto": ["../ts-dto/src"]
+      "app-shared-dtos": ["../shared-dtos/src"]
     },
     "strict": true,
     "noImplicitOverride": true,

@@ -1,0 +1,24 @@
+{
+  "name": "app-backend",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "bun run --watch src/index.ts"
+  },
+  "dependencies": {
+    "@elysiajs/cors": "^1.3.1",
+    "axios": "^1.9.0",
+    "class-transformer": "^0.5.1",
+    "app-core": "workspace:*",
+    "app-infrastructure-mongodb": "workspace:*",
+    "app-shared-dtos": "workspace:*",
+    "dotenv": "^16.5.0",
+    "elysia": "latest",
+    "inversify": "^7.5.1",
+    "jwt-decode": "^4.0.0"
+  },
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "module": "src/index.js"
+}
