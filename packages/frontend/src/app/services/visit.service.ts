@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 export interface Visit {
   totalVisits: number;
+  uniqueVisits: number;
   lastVisit: string;
 }
 
@@ -11,15 +13,18 @@ export interface Visit {
   providedIn: 'root'
 })
 export class VisitService {
-  private readonly apiUrl = 'http://localhost:3030/visits';
+  private readonly apiUrl = `${environment.apiURL}/visits`;
+  private readonly VISIT_KEY = 'has_visited_before';
 
   constructor(private http: HttpClient) {}
 
   recordVisit(): Observable<Visit> {
-    console.log('record VISIT')
-    const b = this.http.put<Visit>(`${this.apiUrl}/record`, {});
-    console.log('VISIT FINISHED');
-    return b;
+    const isUniqueVisit = !localStorage.getItem(this.VISIT_KEY);
+    if (isUniqueVisit) {
+      localStorage.setItem(this.VISIT_KEY, 'true');
+    }
+    
+    return this.http.put<Visit>(`${this.apiUrl}/record`, { isUniqueVisit });
   }
 
   getVisits(): Observable<Visit> {

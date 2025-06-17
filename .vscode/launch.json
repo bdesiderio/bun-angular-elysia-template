@@ -1,0 +1,15 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+        "type": "bun",
+        "internalConsoleOptions": "neverOpen",
+        "request": "launch",
+        "name": "Debug Backend",
+        "program": "${workspaceFolder}/packages/backend/presentation/src/index.ts",
+        "cwd": "${workspaceFolder}",
+        "stopOnEntry": false,
+        "watchMode": true
+    },
+  ]
+}

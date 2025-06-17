@@ -33,7 +33,7 @@ export class LocationService {
     },
     {
       name: 'Tierras Libres del Sur',
-      description: 'Habitan aquellos que prefieren vivir en la libertad, por fuera de monarquías. Aquí se juntan todas las razas y culturas del continente.',
+      description: 'Región en la que habitan aquellos que prefieren vivir en la libertad, por fuera de monarquías. Aquí se juntan todas las razas y culturas del continente.',
       image: 'assets/images/locations/pueblos-libres.png',
       inhabitants: 'Todas las razas'
     },
