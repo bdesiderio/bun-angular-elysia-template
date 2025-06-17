@@ -1,5 +1,4 @@
-import "reflect-metadata";
-import { Container, injectable, METADATA_KEY } from "inversify";
+import { Container, decorate, injectable } from "inversify";
 import { ICommand } from "../cqrs/icommand";
 import { ICommandHandler } from "../cqrs/icommand.handler";
 
@@ -13,18 +12,23 @@ export class DIService {
         DIService.container.bind<TCommandHandler>(command.name).to(handler);
     }
 
+
     static addCommandToContainer<TResult, TCommand extends ICommand<TResult>,
         TCommandHandler extends ICommandHandler<TCommand, TResult>>(
             container: Container,
             command: new (...args: never[]) => TCommand,
             handler: new (...args: never[]) => TCommandHandler) {
 
-        const isAlreadyInjectable = Reflect.hasOwnMetadata(METADATA_KEY.PARAM_TYPES, handler);
-
-        if (!isAlreadyInjectable) {
-            injectable()(handler);
+        // Si el handler no es decorado aún, decoralo dinámicamente
+        try {
+            decorate(injectable(), handler);
+        } catch (e) {
+            // Si ya estaba decorado, no hacer nada
+            if (!(e instanceof Error && e.message.includes('Cannot apply @injectable decorator multiple times'))) {
+                throw e;
+            }
         }
-        
+
         container.bind<TCommandHandler>(command.name).to(handler);
     }
 }

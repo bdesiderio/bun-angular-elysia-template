@@ -10,12 +10,12 @@
   },
   "dependencies": {
     "@calipso/typescript-core": "workspace:*",
+    "app-core": "workspace:*",
+    "app-shared-dtos": "workspace:*",
     "axios": "^1.4.0",
     "calipso-ts": "0.1.0",
     "class-transformer": "^0.5.1",
-    "app-core": "workspace:*",
-    "app-shared-dtos": "workspace:*",
-    "inversify": "^6.0.1",
+    "inversify": "7.5.2",
     "reflect-metadata": "^0.1.13"
   },
   "peerDependencies": {

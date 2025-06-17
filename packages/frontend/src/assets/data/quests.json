@@ -1,0 +1,18 @@
+[
+  {
+    "id": "caravana-al-sur",
+    "title": "Caravana al Sur",
+    "description": "Los personajes viajaron desde las tierras de Paranor hacia el sur para reunirse con Oerendill, un mago perteneciente a una organización secreta que los había convocado. En su travesía, debieron cruzar el sitiado reino de Paranor y escapar de sus peligrosas fronteras.",
+    "image": "assets/images/quests/1-caravana-al-sur.png",
+    "completed": true,
+    "order": 1
+  },
+  {
+    "id": "espesura-negra",
+    "title": "El Bosque de la Espesura Negra",
+    "description": "Durante su viaje, llegaron al Bosque de la Espesura Negra, hogar de una antigua bruja elfa marcada por siglos de soledad, angustia y dolor. Algunos de los personajes perecieron en sus dominios, pero fueron devueltos a la vida por el frío beso de la dama. Sin embargo, aquella resurrección no fue un regalo: su tristeza ancestral se arraigó en el alma de quienes no lograron sostener su voluntad… y desde entonces, una sombra los acompaña.",
+    "image": "assets/images/quests/2-espesura-negra.png",
+    "completed": true,
+    "order": 2
+  }
+] 

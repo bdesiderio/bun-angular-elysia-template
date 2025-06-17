@@ -1,1 +1,2 @@
-export * from "./users/create-user.command.handler";
+export * from "./visits/get-visit.query";
+export * from "./visits/update-visit.command";

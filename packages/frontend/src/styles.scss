@@ -1,1 +1,34 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+
 /* You can add global styles to this file, and also import other style files */
+body {
+    margin: 0px !important;
+    font-family: 'Crimson Text', serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Ajustes adicionales para mejorar la legibilidad */
+p {
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+/* Estilo para textos destacados */
+.hero-content h1 {
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Estilo para los nombres de los héroes */
+.hero-info h3 {
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}

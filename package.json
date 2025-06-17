@@ -3,6 +3,7 @@
     "private": true,
     "workspaces": [
         "packages/calipso-libs/*/**",
+        "packages/calipso-libs/typescript-npm/core",
         "packages/*/**",
         "packages/backend/*/**",
         "packages/frontend/*"

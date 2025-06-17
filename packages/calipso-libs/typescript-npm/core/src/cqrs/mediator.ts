@@ -18,9 +18,9 @@ export class Mediator {
         this.container = container;
     }
 
-    async send<TCommand extends ICommand<any>>(command: TCommand): Promise<TCommand extends ICommand<infer TResult> ? TResult : never> {
-        const handlers = await this.container.getAllAsync(command.constructor.name) as ICommandHandler<TCommand, any>[];
-        return await handlers[handlers.length - 1].handle(command);
+    async send<TResult>(command: ICommand<TResult>): Promise<TResult> {
+        const handlers = await this.container.getAllAsync(command.constructor.name) as ICommandHandler<TResult, any>[];
+        return await handlers[handlers.length - 1].handle(command as any);
     }
 
     async notify<TNotification extends INotification>(notification: TNotification): Promise<void> {

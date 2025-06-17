@@ -1,17 +1,15 @@
 import "reflect-metadata";
+
 import { Elysia, t } from "elysia";
 import { Container } from "inversify";
 import { AppModule } from "./app.module";
 import { ConfigDI } from "./di/config";
 import cors from "@elysiajs/cors";
-import { BrandingController } from "./controllers/brading.controller";
-import { DBoxVerifierMongoDBDIConfig } from "dbox-login-infrastructure-mongodb";
-import { VCLoginController } from "./controllers/vclogin.controller";
 import dotenv from "dotenv";
-import { WebhookController } from "./controllers/webhook.controller";
-import { IIdentityRepository, IdentityRepositorySymbol } from "dbox-login-core";
-import { IdentityService } from "./services/identity.service";
 import { EnvConfig } from "./env";
+import { VisitController } from "./controllers/visit.controller";
+import { AppInfrastructureFilesystemDBDIConfig } from "app-infrastructure-data-filesystem";
+import { AppApplicationDIConfig } from "app-application";
 
 dotenv.config();
 
@@ -30,7 +28,8 @@ const module = new AppModule(app, myContainer);
 // Dnd5CompanionCoreDIConfig.init(myContainer);
 // Dnd5CompanionApplicationDIConfig.init(myContainer);
 
-DBoxVerifierMongoDBDIConfig.config(myContainer, myContainer.get(EnvConfig).MONGO_DB_URL);
+AppInfrastructureFilesystemDBDIConfig.config(myContainer, 'data');
+AppApplicationDIConfig.init(myContainer);
 // Dnd5CompanionDataTypeORMBDIConfig.config(myContainer, {
 //   type: "mariadb",
 //   host: "localhost",
@@ -44,13 +43,11 @@ DBoxVerifierMongoDBDIConfig.config(myContainer, myContainer.get(EnvConfig).MONGO
 // myContainer.bind(FileServiceSymbol).to(ConcreteFileService).inSingletonScope();
 
 module.registerControllers([
-  BrandingController,
-  VCLoginController,
-  WebhookController
+  VisitController
 ]);
 
-const identityRepository = myContainer.get<IdentityService>(IdentityService);
-identityRepository.createIdentityIfNotExist();
+// const identityRepository = myContainer.get<IdentityService>(IdentityService);
+// identityRepository.createIdentityIfNotExist();
 
 app.use(cors({ credentials: true, origin: true }))
   .listen({ port: 3030, idleTimeout: 60 });

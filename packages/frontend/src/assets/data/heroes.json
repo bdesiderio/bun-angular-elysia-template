@@ -1,0 +1,62 @@
+[
+  {
+    "id": "torek",
+    "name": "Torek",
+    "image": "assets/images/heros/torek.png",
+    "description": "Criado por monjes, guiado por la espada… pero marcado por un pacto con lo desconocido. Un libro prohibido llamó su atención, y ahora persigue el poder que su alma no pudo generar por sí misma.",
+    "class": "Paladin - Brujo",
+    "race": "Humano",
+    "alignment": "Neutral",
+    "fullDescription": "<article><p>No recuerdo el rostro de mis padres. Nací en alguna ciudad sin nombre importante y fui dejado a las puertas de un monasterio cercano a Monastery Land. Allí me criaron los monjes, hombres y mujeres que veían en cada niño abandonado un designio divino, una página en blanco para la voluntad de Pelor.</p><blockquote><p>“Todo sucede por algo”, me repetían. “Quizá Pelor quiera hacer de ti algo grande”.</p></blockquote><p>Durante años abracé esa esperanza. Pensaba que mi historia dolía porque debía tener un gran final. Pero con el tiempo, comencé a sospechar que tal vez era sólo una frase para consolar a quienes nacen con preguntas sin respuesta.</p><p>Mi cuerpo creció fuerte y firme, como las columnas del templo, y mis superiores decidieron que fuera entrenado en el arte de la guerra. No para sembrar muerte, sino para ser un portador de la paz. La espada y el escudo me resultaron naturales; en la disciplina del combate encontré una forma de oración.</p><p>Pero había otra fuerza que me llamaba: la magia.<br>Veía cómo algunos sanaban heridas con solo tocar, cómo otros invocaban fuego desde la nada o hacían temblar el aire con palabras antiguas. Me fascinaba. No por poder, sino por misterio.</p><p>Intenté imitar sus gestos, repetir sus oraciones, memorizar sus fórmulas… pero en mí no surgía nada. Ninguna chispa. Ninguna señal. Fue entonces cuando comprendí: la magia no era parte de mí.</p><p>Entonces leí algo diferente. En un libro prohibido —<em>“De los demonios y otros patrones”</em>— descubrí que algunos no nacían con magia... sino que la recibían. Que había entidades antiguas que ofrecían poder a cambio de un pacto. No todo era bueno. No todo era limpio. Pero era una puerta.</p><p>Ya no podía fingir que pertenecía a ese mundo. El monasterio había sido mi cuna, pero no sería mi destino. Quizá Pelor realmente tenía un plan para mí… pero no dentro de aquellas paredes.</p><p>Dejé el monasterio para recorrer el reino, buscando no solo conocimiento, sino sentido. Defendí aldeas, ayudé a los necesitados, empuñé la espada por causas que valían la pena. Pero lo que realmente cambió mi rumbo fue encontrarme con Keylon.<br>No dijo mucho, sólo que me necesitaba. Y que su maestro podía darme las respuestas que había buscado toda mi vida.</p><p>Lo decidí entonces: emprendería ese nuevo camino.<br>Uno entre la luz y la sombra, entre la fe y el fuego, donde el destino —por fin— empezaría a revelarse.</p></article>"
+  },
+  {
+    "id": "Sir-aldric",
+    "name": "Sir Aldric",
+    "image": "assets/images/heros/cid-aldric.png",
+    "description": "Busca redención y un propósito en un mundo que lo ha dejado atrás.",
+    "class": "Guerrero",
+    "race": "Humano",
+    "alignment": "Legal Bueno",
+    "fullDescription": "<article><p>Hace años, fui un noble caballero al servicio del reino de Norldan1. Mi honor era inquebrantable, mi acero implacable, y la lealtad al rey absoluta. Sin embargo, la traición me marcó para siempre. Cuando la guerra estalló contra el Imperio de Xareth, los consejeros del rey conspiraron en secreto para deshacerse de mí, temerosos de mi influencia sobre la corte. Fui acusado falsamente de conspirar con el enemigo, y sin juicio, exiliado de mi tierra.</p><p>Desde entonces, he vagado de un lugar a otro, vendiendo mi espada al servicio de los necesitados, protegiendo aldeas de bandidos y luchando contra las bestias que acechan en las sombras. Mi armadura está gastada, el estandarte ya no ondea al viento, pero mi corazón sigue firme. A pesar de la desesperanza, busco la verdad sobre mi destierro, esperando algún día limpiar mi nombre o encontrar un nuevo propósito.</p><p>En mis viajes, he encontrado aliados leales y enemigos temibles. Algunos me reconocen como el caballero caído de Valcairn y me ofrecen su ayuda, mientras que otros desean mi cabeza para asegurar que la historia oficial nunca sea cuestionada. Ahora, el destino está en mis manos. Seguiré caminando sin rumbo fijo en busca de justicia y redención.</p></article>"
+  },
+  {
+    "id": "amadeus",
+    "name": "Amadeus",
+    "image": "assets/images/heros/amadeus.png?v=2",
+    "description": "Un mago prodigio que busca conectar los secretos más oscuros de la magia arcana con la música y el arte.",
+    "class": "Hechicero",
+    "race": "Humano",
+    "alignment": "Neutral",
+    "fullDescription": "Historia y trasfondo en desarrollo..."
+  },
+  {
+    "id": "orion",
+    "name": "Orion",
+    "image": "assets/images/heros/orion.png?v=2",
+    "description": "Un devoto clérigo que camina entre la luz de Pelor y las sombras de Shar, buscando el equilibrio entre el día y la noche.",
+    "class": "Clérigo",
+    "race": "Alto elfo",
+    "alignment": "Neutral Bueno",
+    "fullDescription": "Historia y trasfondo en desarrollo..."
+  },
+  {
+    "id": "elvalyn",
+    "name": "Elvalyn",
+    "image": "assets/images/heros/elvalyn.png",
+    "description": "El equilibrio de la naturaleza es primordial y hará lo que sea necesario para protegerlo. Le cuesta confiar en la gente y prefiere la compañía de los animales. Puedes ser terco e inflexible en sus convicciones sobre la naturaleza.",
+    "class": "Explorador",
+    "race": "Elfo",
+    "alignment": "Neutral Bueno",
+    "fullDescription": "<article><p>Elvalyn Morfindel creció en lo profundo de un antiguo bosque, en una comunidad élfica aislada. Desde joven, aprendió los secretos de dicho bosque: las huellas de las criaturas, las propiedades de las plantas, los caminos ocultos que solo los árboles conocen. Una horda demoníaca proveniente de un portal mágico arrasó su pueblo, matando a sus amigos y familiares. Ahora vaga por el mundo en busca de venganza, eliminando demonios y allegados a ellos.</p><p>El entrenamiento en el manejo del arco que tuvo desde pequeño lo convierte en un enemigo letal a distancia. Sigiloso como una serpiente, se escabulle solapándose con el entorno y las sombras, acechando a su próxima presa.</p><p><strong>Rasgos de Personalidad:</strong> Reservado, observador, desconfiado de los extraños al principio, pero leal a quienes se ganan su confianza. Siente una profunda conexión con la naturaleza y le incomodan los entornos urbanos.</p><p>Es atractivo, hasta para los estándares élficos, y a pesar de vivir un poco aislado, tiene maneras corteses y delicadas para con los demás, lo que a veces lleva a malentendidos sobre sus gustos sexuales... Sus largos cabellos negros como ala de cuervo enmarcan una perfecta cara pálida, y sus agudos ojos violáceos parecen escudriñar el fondo de tu alma.</p></article>"
+  },
+  {
+    "id": "samael",
+    "name": "Samael",
+    "image": "assets/images/heros/samael.png?v=2",
+    "description": "Un brujo embaucador, experto en el engaño. Muchas veces ha sido marginado y excluído por su apariencia.",
+    "class": "Brujo",
+    "race": "Goliat",
+    "alignment": "Caótico Neutral",
+    "fullDescription": "Historia y trasfondo en desarrollo..."
+  }
+] 
