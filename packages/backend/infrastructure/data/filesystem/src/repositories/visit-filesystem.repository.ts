@@ -25,6 +25,7 @@ export class VisitRepository implements IVisitRepository {
             // If file doesn't exist, return initial state
             return {
                 totalVisits: 0,
+                uniqueVisits: 0,
                 lastVisit: new Date().toISOString()
             };
         }

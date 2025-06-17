@@ -3,6 +3,7 @@ import { Get, Post, Put } from "../decorators/http.decorator";
 import { BaseController } from "./base.controller";
 import { Mediator } from "@calipso/typescript-core";
 import { GetAllVisitsQuery, UpdateVisitCommand, VisitDto } from "app-shared-dtos";
+import { Body } from "../decorators/query.decorator";
 
 export class VisitController extends BaseController {
     resource: string = "visits";
@@ -12,8 +13,8 @@ export class VisitController extends BaseController {
     }
 
     @Put("/record")
-    async recordVisits(): Promise<void> {
-        await this.mediator.send(new UpdateVisitCommand());
+    async recordVisits(@Body(UpdateVisitCommand) request): Promise<void> {
+        await this.mediator.send(request);
     }
 
     @Get("")

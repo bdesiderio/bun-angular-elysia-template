@@ -4,19 +4,20 @@ import { inject } from "inversify";
 import { VisitRepositorySymbol, IVisitRepository } from "app-core";
 import { DynamicCommandHandler } from "../../decorators/dynamic-command-handler";
 
+interface UpdateVisitRequest {
+}
+
 @DynamicCommandHandler(UpdateVisitCommand)
 export class UpdateVisitCommandHandler implements ICommandHandler<UpdateVisitCommand, void> {
+    constructor(@inject(VisitRepositorySymbol) private visitRepository: IVisitRepository) {}
 
-    constructor(@inject(VisitRepositorySymbol) private visitRepository: IVisitRepository) {
-
-    }
-
-    async handle(command: GetAllVisitsQuery): Promise<void> {
+    async handle(command: UpdateVisitCommand & UpdateVisitRequest): Promise<void> {
         const visit = await this.visitRepository.getAll();
         visit.totalVisits++;
+        if (command.isUniqueVisit) {
+            visit.uniqueVisits++;
+        }
         visit.lastVisit = new Date().toISOString();
-        console.log(visit);
         await this.visitRepository.update(visit);
     }
-
 }
