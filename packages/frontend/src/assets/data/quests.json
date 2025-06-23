@@ -14,5 +14,21 @@
     "image": "assets/images/quests/2-espesura-negra.png",
     "completed": true,
     "order": 2
+  },
+  {
+    "id": "llegada-campoalegre",
+    "title": "La llegada a campoalegre",
+    "description": "Los héroes finalmente llegan a Campoalegre y se encuentran con Orendill, el mago con quien debían reunirse. Mientras descansan en la taberna, descubren que un cazador de monstruos ha estado trabajando en la zona. De pronto, un ataque sorpresivo de goblins sacude la calma del asentamiento. Tras una dura batalla y alcanzar la victoria, los aldeanos revelan una noticia inquietante: la nieta del sabio ha sido secuestrada.",
+    "image": "assets/images/quests/3-llegada-campoalegre.png",
+    "completed": true,
+    "order": 3
+  },
+  {
+    "id": "druidas-azules",
+    "title": "Las Druidas Azules",
+    "description": "La maldición que la bruja ha lanzado sobre los héroes es poderosa y persistente. Para sanar sus cuerpos y espíritus, necesitan la ayuda de unas druidas que habitan en la Isla de los Retirados. Sólo el poder ancestral de su círculo puede aliviar sus dolencias. Tras decidir buscar su auxilio, los héroes llegan al círculo de piedra y entablan diálogo con las enigmáticas guardianas del lugar.",
+    "image": "assets/images/quests/4-druidas-azules.png",
+    "completed": false,
+    "order": 3
   }
 ] 

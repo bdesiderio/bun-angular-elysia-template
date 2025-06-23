@@ -20,13 +20,29 @@ export class VisitRepository implements IVisitRepository {
     async getAll(): Promise<Visit> {
         try {
             const data = await fs.readFile(this.filePath, 'utf-8');
-            return JSON.parse(data);
+            const visit = JSON.parse(data);
+            
+            // Ensure socialClicks exists
+            if (!visit.socialClicks) {
+                visit.socialClicks = {
+                    youtube: 0,
+                    instagram: 0,
+                    twitch: 0
+                };
+            }
+            
+            return visit;
         } catch (error) {
             // If file doesn't exist, return initial state
             return {
                 totalVisits: 0,
                 uniqueVisits: 0,
-                lastVisit: new Date().toISOString()
+                lastVisit: new Date().toISOString(),
+                socialClicks: {
+                    youtube: 0,
+                    instagram: 0,
+                    twitch: 0
+                }
             };
         }
     }

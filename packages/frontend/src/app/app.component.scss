@@ -26,7 +26,7 @@ body {
 
 // Hero Section
 .hero-section {
-  height: 100vh;
+  min-height: 100vh;
   background-image: url('/assets/images/landing.png');
   background-size: cover;
   background-position: center;
@@ -34,7 +34,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
   color: white;
 
   &::before {
@@ -52,30 +51,400 @@ body {
     z-index: 1;
     padding: 2rem;
     width: 90%;
-    max-width: 800px;
+    max-width: 1400px;
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    margin: 0 auto;
 
-    h1 {
-      font-size: clamp(2.5rem, 8vw, 4rem);
-      margin-bottom: 1rem;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    .hero-main {
+      flex: 1;
+      max-width: 900px;
+
+      .hero-header {
+        margin-bottom: 2rem;
+
+        h1 {
+          font-size: clamp(2.5rem, 8vw, 4.5rem);
+          margin-bottom: 1rem;
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+          color: $secondary-color;
+        }
+
+        .hero-subtitle {
+          font-size: clamp(1.2rem, 4vw, 1.8rem);
+          color: $text-color;
+          text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+          margin: 0;
+        }
+      }
+
+      .hero-intro {
+        margin-bottom: 2.5rem;
+
+        .hero-description {
+          font-size: clamp(1rem, 3vw, 1.3rem);
+          line-height: 1.6;
+          color: $text-color;
+          background: rgba(44, 62, 80, 0.8);
+          padding: 1.5rem 2rem;
+          border-radius: 1rem;
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+          border-left: 4px solid $secondary-color;
+          margin: 0;
+        }
+      }
+
+      .hero-cta {
+        margin-bottom: 2rem;
+
+        .follow-text {
+          font-size: clamp(1rem, 3vw, 1.2rem);
+          color: $text-color;
+          margin-bottom: 1.5rem;
+          text-align: center;
+          font-weight: bold;
+        }
+
+        .social-links {
+          display: flex;
+          gap: 1rem;
+          justify-content: center;
+          flex-wrap: wrap;
+
+          .social-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 1.5rem;
+            border-radius: 2rem;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-size: 1.1rem;
+            font-weight: bold;
+
+            i {
+              font-size: 1.3rem;
+            }
+
+            &:hover {
+              transform: translateY(-3px);
+              box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            }
+
+            &.youtube {
+              background: #FF0000;
+            }
+
+            &.instagram {
+              background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            }
+
+            &.twitch {
+              background: #9146FF;
+            }
+          }
+        }
+      }
+
+      .visit-counter {
+        margin-top: 2rem;
+        padding: 1rem 1.5rem;
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 8px;
+        font-size: clamp(0.9rem, 3vw, 1rem);
+        border: 1px solid rgba($secondary-color, 0.3);
+
+        p {
+          margin: 0.5rem 0;
+          color: $text-color;
+        }
+      }
     }
 
-    p {
-      font-size: clamp(1rem, 4vw, 1.5rem);
-      max-width: 600px;
-      margin: 0 auto;
-    }
+    .hero-visual {
+      flex: 0 0 350px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 350px;
 
-    .visit-counter {
-      margin-top: 2rem;
+      .hero-logo {
+        width: auto;
+        height: 350px;
+        object-fit: contain;
+        border-radius: 1rem;
+        // box-shadow: 0 0 30px rgba($secondary-color, 0.3);
+        // border: 4px solid rgba($secondary-color, 0.5);
+        // transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        // &:hover {
+          // transform: scale(1.05);
+          // box-shadow: 0 0 40px rgba($secondary-color, 0.5);
+        // }
+      }
+    }
+  }
+}
+
+// Media Queries for Hero Section
+@media (max-width: 1200px) {
+  .hero-section {
+    .hero-content {
+      gap: 3rem;
+
+      .hero-visual {
+        flex: 0 0 300px;
+        width: 300px;
+
+        .hero-logo {
+          width: auto;
+          height: 300px;
+          object-fit: contain;
+          border-radius: 1rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-section {
+    .hero-content {
+      flex-direction: column;
+      gap: 2rem;
+      text-align: center;
+
+      .hero-main {
+        order: 2;
+        max-width: 100%;
+
+        .hero-cta {
+          .social-links {
+            justify-content: center;
+          }
+        }
+      }
+
+      .hero-visual {
+        order: 1;
+        flex: 0 0 auto;
+        width: auto;
+
+        .hero-logo {
+          width: auto;
+          height: 250px;
+          object-fit: contain;
+          border-radius: 1rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-section {
+    .hero-content {
       padding: 1rem;
-      background: rgba(0, 0, 0, 0.7);
-      border-radius: 8px;
-      font-size: clamp(0.9rem, 3vw, 1rem);
+
+      .hero-main {
+        .hero-cta {
+          .social-links {
+            flex-direction: column;
+            align-items: center;
+
+            .social-link {
+              width: 200px;
+              justify-content: center;
+            }
+          }
+        }
+      }
+
+      .hero-visual {
+        width: auto;
+
+        .hero-logo {
+          width: auto;
+          height: 200px;
+          object-fit: contain;
+          border-radius: 1rem;
+        }
+      }
+    }
+  }
+}
+
+// Episodes Section
+.episodes-section {
+  background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+  padding: 4rem 2rem;
+  text-align: center;
+
+  h2 {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    margin-bottom: 1rem;
+    color: $secondary-color;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  > p {
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    color: $text-color;
+    margin-bottom: 3rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .episodes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .episode-card {
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba($primary-color, 0.2);
+
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 25px rgba($secondary-color, 0.3);
+      border-color: rgba($secondary-color, 0.4);
+
+      .episode-thumbnail .play-button {
+        opacity: 1;
+      }
+    }
+
+    .episode-thumbnail {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+        cursor: pointer;
+      }
+
+      .play-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(255, 0, 0, 0.9);
+        color: white;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 2;
+
+        i {
+          font-size: 1.5rem;
+        }
+
+        &:hover {
+          background: rgba(255, 0, 0, 1);
+        }
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: 1;
+      }
+    }
+
+    .episode-info {
+      padding: 1.5rem;
+
+      h3 {
+        font-size: clamp(1.2rem, 3vw, 1.4rem);
+        margin-bottom: 0.8rem;
+        color: $secondary-color;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      }
 
       p {
-        margin: 0.5rem 0;
+        font-size: clamp(0.9rem, 2.5vw, 1rem);
+        line-height: 1.5;
         color: $text-color;
+        margin-bottom: 1rem;
+        opacity: 0.9;
+      }
+
+      .episode-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+
+        span {
+          background: rgba($primary-color, 0.3);
+          padding: 0.4rem 0.8rem;
+          border-radius: 20px;
+          font-size: 0.85rem;
+          color: $text-color;
+          border: 1px solid rgba($primary-color, 0.2);
+        }
+
+        .episode-duration {
+          color: $secondary-color;
+          font-weight: bold;
+        }
+
+        .episode-date {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+}
+
+// Media Queries for Episodes
+@media (max-width: 1200px) {
+  .episodes-section {
+    .episodes-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .episodes-section {
+    .episodes-grid {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    .episode-card {
+      .episode-thumbnail .play-button {
+        opacity: 1;
+        width: 50px;
+        height: 50px;
+
+        i {
+          font-size: 1.2rem;
+        }
       }
     }
   }
@@ -483,114 +852,7 @@ img[protectedImage] {
 }
 
 .about-us {
-  background: linear-gradient(135deg, #262626 0%, #1a1a1a 100%);
-  padding: 4rem 2rem;
-  border-bottom: 1px solid rgba($primary-color, 0.15);
-
-  .about-us-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2.5rem;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .about-text {
-    flex: 1;
-    min-width: 250px;
-    text-align: left;
-
-    h2 {
-      color: $secondary-color;
-      font-size: clamp(1.8rem, 5vw, 2.5rem);
-      margin-bottom: 1rem;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    }
-
-    p {
-      font-size: clamp(1rem, 3vw, 1.2rem);
-      color: $text-color;
-      line-height: 1.6;
-      background: rgba(44, 62, 80, 0.7);
-      padding: 1.2rem 1.5rem;
-      border-radius: 1rem;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-      margin-bottom: 1.5rem;
-    }
-
-    .social-links {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      margin-top: 1.5rem;
-
-      .social-link {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.8rem 1.2rem;
-        border-radius: 2rem;
-        color: white;
-        text-decoration: none;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        font-size: 1.1rem;
-
-        i {
-          font-size: 1.3rem;
-        }
-
-        &:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        &.youtube {
-          background: #FF0000;
-        }
-
-        &.instagram {
-          background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-        }
-
-        &.twitch {
-          background: #9146FF;
-        }
-      }
-    }
-  }
-
-  .about-logo {
-    width: 280px;
-    height: 280px;
-    object-fit: contain;
-    border-radius: 50%;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    flex-shrink: 0;
-    margin-left: 1rem;
-  }
-}
-
-@media (max-width: 900px) {
-  .about-us {
-    .about-us-content {
-      flex-direction: column-reverse;
-      text-align: center;
-      gap: 1.5rem;
-    }
-
-    .about-logo {
-      margin: 0 auto 0 0;
-    }
-
-    .about-text {
-      text-align: center;
-
-      .social-links {
-        flex-wrap: wrap;
-      }
-    }
-  }
+  // Removed - content integrated into hero section
 }
 
 // Locations Section

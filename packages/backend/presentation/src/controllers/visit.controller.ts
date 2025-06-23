@@ -2,7 +2,7 @@ import { inject } from "inversify";
 import { Get, Post, Put } from "../decorators/http.decorator";
 import { BaseController } from "./base.controller";
 import { Mediator } from "@calipso/typescript-core";
-import { GetAllVisitsQuery, UpdateVisitCommand, VisitDto } from "app-shared-dtos";
+import { GetAllVisitsQuery, UpdateVisitCommand, VisitDto, RecordSocialClickCommand } from "app-shared-dtos";
 import { Body } from "../decorators/query.decorator";
 
 export class VisitController extends BaseController {
@@ -14,6 +14,11 @@ export class VisitController extends BaseController {
 
     @Put("/record")
     async recordVisits(@Body(UpdateVisitCommand) request): Promise<void> {
+        await this.mediator.send(request);
+    }
+
+    @Put("/social-click")
+    async recordSocialClick(@Body(RecordSocialClickCommand) request): Promise<void> {
         await this.mediator.send(request);
     }
 

@@ -1,4 +1,10 @@
 {
   "totalVisits": 135,
-  "lastVisit": "2025-06-17T05:03:24.651Z"
+  "uniqueVisits": 1,
+  "lastVisit": "2025-06-17T05:03:24.651Z",
+  "socialClicks": {
+    "youtube": 1,
+    "instagram": 1,
+    "twitch": 2
+  }
 }

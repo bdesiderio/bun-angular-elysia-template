@@ -9,43 +9,94 @@
 <!-- Hero Section -->
 <section class="hero-section">
   <div class="hero-content">
-    <h1>Acolitos del Rol</h1>
-    <p>Un viaje épico de D&D a través de tierras legendarias</p>
-    <div class="visit-counter" *ngIf="visits">
-      <p>Visitas totales: {{ visits.totalVisits }}</p>
-      <p>Última visita: {{ visits.lastVisit | date:'medium' }}</p>
+    <div class="hero-main">
+      <div class="hero-header">
+        <h1>Acolitos del Rol</h1>
+        <p class="hero-subtitle">Un viaje épico de D&D a través de tierras legendarias</p>
+      </div>
+      
+      <div class="hero-intro">
+        <p class="hero-description">
+          Somos un grupo apasionado por los juegos de rol y la fantasía. Nuestro objetivo es compartir aventuras,
+          historias y experiencias inolvidables en el mundo de Dungeons & Dragons. ¡Únete a nuestra comunidad y vive la
+          magia del rol con nosotros!
+        </p>
+      </div>
+
+      <div class="hero-cta">
+        <p class="follow-text">Seguínos en redes para no perderte nada!</p>
+        <div class="social-links">
+          <a href="javascript:void(0)" (click)="onSocialMediaClick('https://www.youtube.com/@AcolitosDelRol', 'YouTube')" 
+            class="social-link youtube">
+            <i class="fab fa-youtube"></i>
+            <span>YouTube</span>
+          </a>
+          <a href="javascript:void(0)" (click)="onSocialMediaClick('https://www.instagram.com/acolitosdelrol/', 'Instagram')" 
+            class="social-link instagram">
+            <i class="fab fa-instagram"></i>
+            <span>Instagram</span>
+          </a>
+          <a href="javascript:void(0)" (click)="onSocialMediaClick('http://twitch.tv/acolitosdelrol', 'Twitch')" 
+            class="social-link twitch">
+            <i class="fab fa-twitch"></i>
+            <span>Twitch</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="visit-counter" *ngIf="visits">
+        <p>Visitas totales: {{ visits.totalVisits }}</p>
+        <p>Última visita: {{ visits.lastVisit | date:'medium' }}</p>
+        <div class="social-stats" *ngIf="visits.socialClicks">
+          <h4>Clics en Redes Sociales:</h4>
+          <div class="social-stats-grid">
+            <div class="social-stat">
+              <i class="fab fa-youtube"></i>
+              <span>YouTube: {{ visits.socialClicks.youtube }}</span>
+            </div>
+            <div class="social-stat">
+              <i class="fab fa-instagram"></i>
+              <span>Instagram: {{ visits.socialClicks.instagram }}</span>
+            </div>
+            <div class="social-stat">
+              <i class="fab fa-twitch"></i>
+              <span>Twitch: {{ visits.socialClicks.twitch }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="hero-visual">
+      <img src="assets/images/logo.jpeg" alt="Logo Acolitos del Rol" class="hero-logo" />
     </div>
   </div>
 </section>
 
 <!-- About Us Section -->
-<section class="about-us">
-  <div class="about-us-content">
-    <div class="about-text">
-      <h2>Sobre Nosotros</h2>
-      <p>
-        Somos un grupo apasionado por los juegos de rol y la fantasía. Nuestro objetivo es compartir aventuras,
-        historias y experiencias inolvidables en el mundo de Dungeons & Dragons. ¡Únete a nuestra comunidad y vive la
-        magia del rol con nosotros! <br>Seguinos en redes para no perderte nada!
-      </p>
-      <div class="social-links">
-        <a href="https://www.youtube.com/@AcolitosDelRol" target="_blank" rel="noopener noreferrer"
-          class="social-link youtube">
+<!-- Removed - content integrated into hero section -->
+
+<!-- Episodes Section -->
+<section class="episodes-section">
+  <h2>Nuestras Aventuras</h2>
+  <p>Revive las épicas sesiones y momentos inolvidables de nuestra campaña</p>
+  <div class="episodes-grid">
+    <div class="episode-card" *ngFor="let episode of episodes">
+      <div class="episode-thumbnail" (click)="openEpisode(episode)" style="cursor: pointer;">
+        <img style="z-index: 1000;" [src]="episode.thumbnail" [alt]="episode.title" protectedImage>
+        <div class="play-button" (click)="openEpisode(episode)">
           <i class="fab fa-youtube"></i>
-          <span>YouTube</span>
-        </a>
-        <a href="https://www.instagram.com/acolitosdelrol/" target="_blank" rel="noopener noreferrer"
-          class="social-link instagram">
-          <i class="fab fa-instagram"></i>
-          <span>Instagram</span>
-        </a>
-        <a href="http://twitch.tv/acolitosdelrol" target="_blank" rel="noopener noreferrer" class="social-link twitch">
-          <i class="fab fa-twitch"></i>
-          <span>Twitch</span>
-        </a>
+        </div>
+      </div>
+      <div class="episode-info">
+        <h3>{{ episode.title }}</h3>
+        <p>{{ episode.description }}</p>
+        <div class="episode-meta">
+          <span class="episode-duration">{{ episode.duration }}</span>
+          <span class="episode-date">{{ episode.date | date:'dd/MM/yyyy' }}</span>
+        </div>
       </div>
     </div>
-    <img src="assets/images/logo.jpeg" alt="Logo Acolitos del Rol" class="about-logo" style="margin: auto;" />
   </div>
 </section>
 

@@ -7,6 +7,11 @@ export interface Visit {
   totalVisits: number;
   uniqueVisits: number;
   lastVisit: string;
+  socialClicks: {
+    youtube: number;
+    instagram: number;
+    twitch: number;
+  };
 }
 
 @Injectable({
@@ -25,6 +30,10 @@ export class VisitService {
     }
     
     return this.http.put<Visit>(`${this.apiUrl}/record`, { isUniqueVisit });
+  }
+
+  recordSocialClick(platform: 'youtube' | 'instagram' | 'twitch'): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/social-click`, { platform });
   }
 
   getVisits(): Observable<Visit> {
