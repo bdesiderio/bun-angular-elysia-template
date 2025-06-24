@@ -22,6 +22,16 @@ h3 {
 
 body {
   margin: 0px;
+  padding-bottom: calc(50px + env(safe-area-inset-bottom)); // Altura aproximada del panel flotante más delgado + Safe Area
+
+  @media (max-width: 768px) {
+    padding-bottom: calc(60px + env(safe-area-inset-bottom)); // Más espacio en móviles + Safe Area
+  }
+}
+
+// Aplicar padding-bottom a la última sección de la página
+section:last-of-type {
+  padding-bottom: 80px !important;
 }
 
 // Hero Section
@@ -969,7 +979,7 @@ img[protectedImage] {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 100;
   padding: 1rem;
 
   .modal-content {
@@ -1040,6 +1050,127 @@ img[protectedImage] {
 
       em {
         color: $secondary-color;
+      }
+    }
+  }
+}
+
+// Floating Social Panel
+.floating-social-panel {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, rgba(44, 62, 80, 0.95) 0%, rgba(26, 26, 26, 0.95) 100%);
+  backdrop-filter: blur(10px);
+  border-top: 2px solid $secondary-color;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+  z-index: 99;
+  padding: 0.5rem 0;
+  padding-bottom: 10px;
+  
+  // Soporte para Safe Area en iPhone
+  // padding-bottom: env(safe-area-inset-bottom);
+  bottom: env(safe-area-inset-bottom);
+
+  .floating-panel-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+
+    @media (max-width: 768px) {
+      flex-direction: row;
+      gap: 0.5rem;
+      text-align: center;
+      padding: 0 1rem;
+    }
+
+    .floating-panel-text {
+      h3 {
+        color: $secondary-color;
+        margin: 0;
+        font-size: 1rem;
+        font-weight: bold;
+
+        @media (max-width: 768px) {
+          font-size: 0.9rem;
+        }
+      }
+    }
+
+    .floating-social-links {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      @media (max-width: 768px) {
+        gap: 0.3rem;
+      }
+
+      .floating-social-link {
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+        padding: 0.4rem 0.8rem;
+        border-radius: 1.5rem;
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
+        font-weight: bold;
+        min-width: 60px;
+        justify-content: center;
+
+        @media (max-width: 768px) {
+          padding: 0.3rem 0.6rem;
+          width: 50px;
+          font-size: 0.8rem;
+          padding-top: 12px;
+          padding-bottom: 12px;
+        }
+
+        i {
+          font-size: 1rem;
+
+          @media (max-width: 768px) {
+            font-size: 0.9rem;
+          }
+        }
+
+        span {
+          font-weight: bold;
+        }
+
+        &:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        &.youtube {
+          background: #FF0000;
+          &:hover {
+            background: #cc0000;
+          }
+        }
+
+        &.instagram {
+          background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+          &:hover {
+            background: linear-gradient(45deg, #e0852a 0%, #d55a2a 25%, #c61f33 50%, #b31a4a 75%, #a40f66 100%);
+          }
+        }
+
+        &.twitch {
+          background: #9146FF;
+          &:hover {
+            background: #7a3dd8;
+          }
+        }
       }
     }
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HeroService } from './services/hero.service';
@@ -12,6 +12,7 @@ import { Location } from './models/location.model';
 import { LocationService } from './services/location.service';
 import { Episode } from './models/episode.model';
 import { EpisodeService } from './services/episode.service';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 // Google Ads conversion tracking function
 declare function gtag(...args: any[]): void;
@@ -21,7 +22,18 @@ declare function gtag(...args: any[]): void;
   standalone: true,
   imports: [CommonModule, RouterOutlet, ProtectedImageDirective],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
+  animations: [
+    trigger('slideInUp', [
+      transition(':enter', [
+        style({ transform: 'translateY(100%)', opacity: 0 }),
+        animate('300ms ease-out', style({ transform: 'translateY(0)', opacity: 1 }))
+      ]),
+      transition(':leave', [
+        animate('300ms ease-in', style({ transform: 'translateY(100%)', opacity: 0 }))
+      ])
+    ])
+  ]
 })
 export class AppComponent implements OnInit {
   heroes: Hero[] = [];
@@ -31,6 +43,7 @@ export class AppComponent implements OnInit {
   episodes: Episode[] = [];
   selectedHero: Hero | null = null;
   private isGoogleAdsTraffic = false;
+  showFloatingSocialPanel = false;
 
   constructor(
     private heroService: HeroService,
@@ -41,6 +54,23 @@ export class AppComponent implements OnInit {
   ) {
   }
 
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll() {
+    this.checkSocialSectionVisibility();
+  }
+
+  private checkSocialSectionVisibility(): void {
+    const socialSection = document.querySelector('.hero-cta');
+    if (socialSection) {
+      const rect = socialSection.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      
+      // Mostrar el panel flotante cuando la sección de redes sociales no está visible
+      // o cuando está muy cerca del borde superior (más de 100px arriba)
+      this.showFloatingSocialPanel = rect.bottom < 0 || rect.top > windowHeight - 100;
+    }
+  }
+
   async ngOnInit() {
     this.loadHeroes();
     this.loadQuests();
@@ -49,6 +79,11 @@ export class AppComponent implements OnInit {
     this.loadEpisodes();
 
     await this.checkGoogleAdsTraffic();
+
+    // Verificar la visibilidad inicial de la sección de redes sociales
+    setTimeout(() => {
+      this.checkSocialSectionVisibility();
+    }, 100);
 
       gtag('event', 'conversion', {
         'send_to': 'AW-17232040715/djzcCImGquAaEIum8JhA',
@@ -108,20 +143,92 @@ export class AppComponent implements OnInit {
   onSocialMediaClick(url: string, platform: string): void {
     console.log(`Social media click: ${platform} - Google Ads traffic: ${this.isGoogleAdsTraffic}`);
     
-    // Record the social click first
+    // HACER TRACKING SIEMPRE - independientemente del dispositivo
+    this.recordSocialClick(platform);
+    
+    // Detectar si es dispositivo móvil
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    // URLs específicas para aplicaciones móviles
+    const mobileUrls = {
+      'YouTube': 'youtube://www.youtube.com/@AcolitosDelRol', // Intentar abrir app de YouTube
+      'Instagram': 'instagram://user?username=acolitosdelrol', // Intentar abrir app de Instagram
+      'Twitch': 'twitch://stream/acolitosdelrol' // Intentar abrir app de Twitch
+    };
+    
+    // URL final a usar
+    let finalUrl = url;
+    
+    if (isMobile) {
+      const mobileUrl = mobileUrls[platform as keyof typeof mobileUrls];
+      if (mobileUrl) {
+        // Intentar abrir la app nativa, si falla, abrir la web
+        this.openAppOrFallback(mobileUrl, url, platform);
+        return;
+      }
+    }
+    
+    // Para PC o si no hay URL móvil específica, usar comportamiento actual
+    this.openSocialLink(finalUrl, platform);
+  }
+
+  // Función para registrar el clic social (tracking)
+  private recordSocialClick(platform: string): void {
     const socialPlatform = platform.toLowerCase() as 'youtube' | 'instagram' | 'twitch';
     this.visitService.recordSocialClick(socialPlatform).subscribe({
       next: () => {
         console.log(`Social click recorded for ${platform}`);
-        // Then handle Google Ads conversion if applicable
-        this.gtag_report_conversion(url);
       },
       error: (error) => {
         console.error(`Error recording social click for ${platform}:`, error);
-        // Still redirect even if recording fails
-        this.gtag_report_conversion(url);
       }
     });
+  }
+
+  // Función para intentar abrir app nativa o fallback a web
+  private openAppOrFallback(appUrl: string, webUrl: string, platform: string): void {
+    // Variable para rastrear si la app se abrió
+    let appOpened = false;
+    
+    // Escuchar cambios en la visibilidad de la página
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        appOpened = true;
+        document.removeEventListener('visibilitychange', handleVisibilityChange);
+      }
+    };
+    
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    
+    // Intentar abrir la app usando window.location
+    try {
+      window.location.href = appUrl;
+    } catch (error) {
+      console.log(`Error opening ${platform} app:`, error);
+    }
+    
+    // Después de un tiempo, verificar si la app se abrió
+    setTimeout(() => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      
+      // Si la app no se abrió (usuario aún está en la página), abrir la web
+      if (!appOpened && document.visibilityState === 'visible') {
+        console.log(`App ${platform} no disponible, abriendo web`);
+        this.openWebLink(webUrl, platform);
+      }
+    }, 1500);
+  }
+
+  // Función para abrir enlace web (sin tracking adicional)
+  private openWebLink(url: string, platform: string): void {
+    // Solo manejar Google Ads conversion si aplica
+    this.gtag_report_conversion(url);
+  }
+
+  // Función para abrir enlace social con tracking (mantener para PC)
+  private openSocialLink(url: string, platform: string): void {
+    // El tracking ya se hizo en onSocialMediaClick, solo manejar Google Ads conversion
+    this.gtag_report_conversion(url);
   }
 
   private loadHeroes() {

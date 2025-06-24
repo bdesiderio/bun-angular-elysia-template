@@ -179,4 +179,30 @@
   </div>
 </section>
 
+<!-- Floating Social Panel -->
+<div class="floating-social-panel" *ngIf="showFloatingSocialPanel" [@slideInUp]>
+  <div class="floating-panel-content">
+    <div class="floating-panel-text">
+      <h3>¡Seguinos!</h3>
+    </div>
+    <div class="floating-social-links">
+      <a href="javascript:void(0)" (click)="onSocialMediaClick('https://www.youtube.com/@AcolitosDelRol', 'YouTube')" 
+        class="floating-social-link youtube">
+        <i class="fab fa-youtube"></i>
+        <!-- <span>Y</span> -->
+      </a>
+      <a href="javascript:void(0)" (click)="onSocialMediaClick('https://www.instagram.com/acolitosdelrol/', 'Instagram')" 
+        class="floating-social-link instagram">
+        <i class="fab fa-instagram"></i>
+        <!-- <span>I</span> -->
+      </a>
+      <a href="javascript:void(0)" (click)="onSocialMediaClick('http://twitch.tv/acolitosdelrol', 'Twitch')" 
+        class="floating-social-link twitch">
+        <i class="fab fa-twitch"></i>
+        <!-- <span>T</span> -->
+      </a>
+    </div>
+  </div>
+</div>
+
 <router-outlet />
